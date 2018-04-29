@@ -1,12 +1,10 @@
 require 'sinatra/base'
+require 'peep'
 
 class Chitter < Sinatra::Base
   get '/' do
-    peeps = [
-      "I am learning Sinatra",
-      "I am practicing database"
-           ]
-    peeps.join
+    @peeps = Peep.all
+    erb :index
   end
 
   run! if app_file == $0
